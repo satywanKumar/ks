@@ -55,7 +55,11 @@ app.use('/api/auth', authRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/admin', adminRoutes);
 
-// Base route for health check
+// Base route for welcome & health check
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'KS Self Study Zone Booking API is running.' });
+});
+
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'KS Self Study Zone Booking Server is running.' });
 });

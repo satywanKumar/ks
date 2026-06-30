@@ -29,25 +29,8 @@ app.use(helmet({
     },
   },
 }));
-// Setup allowed CORS origins
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  'https://ksselfstudyzone.in',
-  'https://www.ksselfstudyzone.in'
-];
-
-if (process.env.CLIENT_URL) {
-  const envOrigins = process.env.CLIENT_URL.split(',').map(origin => origin.trim());
-  envOrigins.forEach(origin => {
-    if (origin && !allowedOrigins.includes(origin)) {
-      allowedOrigins.push(origin);
-    }
-  });
-}
-
 app.use(cors({
-  origin: allowedOrigins,
+  origin: true,
   credentials: true
 }));
 
